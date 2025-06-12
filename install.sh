@@ -1,9 +1,11 @@
+# Direct installation - copy and paste this entire block
+cat > /tmp/docmost-install.sh << 'SCRIPT_END'
 #!/bin/bash
 #
 # Docmost Installation Script for Debian 12
-# Author: Robert Tulke, rt@debian.sh
+# Author: Auto-generated installer
 # Usage: curl -sSL https://github.com/rtulke/docmost_debian/install.sh | bash
-
+#
 
 set -euo pipefail
 
@@ -93,7 +95,7 @@ get_user_input() {
     
     # Docker port
     read -p "Docker container port [$DOCKER_PORT_DEFAULT]: " DOCKER_PORT
-    DOCKER_PORT=${DOCKER_PORT_DEFAULT:-$DOCKER_PORT_DEFAULT}
+    DOCKER_PORT=${DOCKER_PORT:-$DOCKER_PORT_DEFAULT}
     
     # Domain or IP
     read -p "Domain or IP address [$DOMAIN_DEFAULT]: " DOMAIN
@@ -407,3 +409,7 @@ main() {
 
 # Run main function
 main "$@"
+SCRIPT_END
+
+chmod +x /tmp/docmost-install.sh
+/tmp/docmost-install.sh
