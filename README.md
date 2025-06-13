@@ -7,3 +7,4 @@ Usage
 ```bash
 bash <(curl -sSL https://raw.githubusercontent.com/rtulke/docmost_debian/main/install.sh)
 ```
+*you can not run this script by using `curl -sSL https://raw.githubusercontent.com/rtulke/docmost_debian/main/install.sh | bash` because of bash substituions.
