@@ -28,7 +28,7 @@ Automated installation script for [Docmost](https://docmost.com/) on Debian 12, 
 
 ## Quick Installation
 
-This script can be executed as root user or as normal user, if you do not want to run the containers under root.
+This script can be executed as root user or as normal user if you do not want to run the containers under root.
 
 ```bash
 bash <(curl -sSL https://raw.githubusercontent.com/rtulke/docmost_debian/main/install.sh)
@@ -74,7 +74,7 @@ The script automatically generates:
 
 After successful installation:
 
-1. Navigate to your configured URL (e.g., `http://your-domain.com`)
+1. Navigate to your configured URL (e.g., `http://your-domain.com` or `http://<ip>`)
 2. Complete the Docmost setup wizard
 3. Create your workspace and admin account
 
@@ -137,6 +137,11 @@ sudo systemctl status docker
    cd /opt/docmost
    docker compose logs
    ```
+
+4. **Nginx is not working**:
+   ```bash
+   curl http://localhost:3000
+   ```   
 
 ### Logs and Debugging
 
