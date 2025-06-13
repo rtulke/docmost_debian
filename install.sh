@@ -3,9 +3,8 @@ cat > /tmp/docmost-install.sh << 'SCRIPT_END'
 #!/bin/bash
 #
 # Docmost Installation Script for Debian 12
-# Author: Auto-generated installer
-# Usage: curl -sSL https://github.com/rtulke/docmost_debian/install.sh | bash
-#
+# Author: Robert Tulke, rt@debian.sh
+# Usage: bash <(curl -sSL https://raw.githubusercontent.com/rtulke/docmost_debian/main/install.sh)
 
 set -euo pipefail
 
@@ -160,7 +159,7 @@ install_docker() {
     
     # Install Docker
     $USE_SUDO apt update -qq
-    $USE_SUDO apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+    $USE_SUDO apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-compose
     
     # Add user to docker group if not root
     if [[ -n "$USE_SUDO" ]]; then
@@ -175,14 +174,14 @@ install_docker() {
     success "Docker installed successfully"
 }
 
-# Install PostgreSQL
-install_postgresql() {
-    info "Installing PostgreSQL..."
-    $USE_SUDO apt install -y postgresql postgresql-contrib
-    $USE_SUDO systemctl start postgresql
-    $USE_SUDO systemctl enable postgresql
-    success "PostgreSQL installed successfully"
-}
+## Install PostgreSQL (for manual installation)
+# install_postgresql() {
+#    info "Installing PostgreSQL..."
+#    $USE_SUDO apt install -y postgresql postgresql-contrib
+#    $USE_SUDO systemctl start postgresql
+#    $USE_SUDO systemctl enable postgresql
+#    success "PostgreSQL installed successfully"
+#}
 
 # Create installation directory and setup docker-compose
 setup_docmost() {
@@ -195,8 +194,6 @@ setup_docmost() {
     
     # Create docker-compose.yml
     cat > docker-compose.yml << EOF
-version: "3.8"
-
 services:
   docmost:
     image: docmost/docmost:latest
