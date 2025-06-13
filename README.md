@@ -1,6 +1,6 @@
 # Docmost Debian 12 Installer
 
-Automated installation script for [Docmost](https://docmost.com/) on Debian 12, featuring automatic secret generation, nginx configuration, and PostgreSQL setup.
+Automated installation script for [Docmost](https://docmost.com/) on Debian 12, featuring automatic secret generation, nginx configuration.
 
 ## Features
 
